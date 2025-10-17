@@ -10,6 +10,7 @@ from EmotionDetection import emotion_detector
 app = Flask(__name__)
 
 def format_response(scores: Dict[str, float], dominant: Optional[str]) -> str:
+    """Return a formatted string with emotion scores and the dominant emotion."""
 
     return (
         f"For the given statement, the system response is "
@@ -36,7 +37,7 @@ def detect_emotion():
 
     # Blank-input handling (dominant_emotion == None)
     if result.get("dominant_emotion") is None:
-        return "Invalid text! Please try again!", 400
+        return "Invalid text! Please try again!", 200
 
     scores = {
         "anger": result["anger"],
